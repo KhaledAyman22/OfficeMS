@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="OfficeMS.MVVM.View.ClientAuthsDetails"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewmodel="clr-namespace:OfficeMS.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ClientAuthsDetailsViewModel}"
+             mc:Ignorable="d" d:DesignHeight="725" d:DesignWidth="1200">
+    <Grid>
+        <ListView x:Name="AuthsListView" ItemContainerStyle="{StaticResource ListViewItemTheme}" FlowDirection="RightToLeft" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,40,20,5" ItemsSource="{Binding Auths}" Style="{DynamicResource ListViewTheme}">
+
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{StaticResource ColumnHeaderTheme}">
+                    <GridViewColumn Header="حــرف" DisplayMemberBinding="{Binding Character}" Width="80"/>
+                    <GridViewColumn Header="الرقــم" DisplayMemberBinding="{Binding Number}" Width="150"/>
+                    <GridViewColumn Header="الســنـة" DisplayMemberBinding="{Binding Year}" Width="100"/>
+                    <GridViewColumn Header="مكــتــب" DisplayMemberBinding="{Binding Office}" Width="250"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

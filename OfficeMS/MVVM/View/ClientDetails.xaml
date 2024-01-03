@@ -1,0 +1,34 @@
+﻿<Window x:Class="OfficeMS.MVVM.View.ClientDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xml:lang="ar-EG"
+        mc:Ignorable="d"
+        Height="800"
+        Width="1200"
+        MinHeight="800"
+        MinWidth="1200"
+        ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="SingleBorderWindow"
+        WindowState="Maximized"
+        Background="AliceBlue"
+        Icon="/Images/2.ico">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="#3d5a80"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" FlowDirection="RightToLeft">
+            <RadioButton Width="240" x:Name="LawsuitButton" Style="{StaticResource MenuButtonTheme}" Content="الموكل" FontSize="30"  IsChecked='True' Command='{Binding MainVC}'/>
+            <RadioButton Width="240" x:Name="IncomesButton" Style="{StaticResource MenuButtonTheme}" Content="التـوكـيــلات" FontSize="30" Command='{Binding AuthsVC}'/>
+            <RadioButton Width="240" x:Name="RecordsButton" Style="{StaticResource MenuButtonTheme}" Content="الدعــاوى" FontSize="30" Command='{Binding SuitsVC}'/>
+        </StackPanel>
+
+        <ContentControl Grid.Row="1" Content="{Binding CurrentView}"/>
+    </Grid>
+</Window>

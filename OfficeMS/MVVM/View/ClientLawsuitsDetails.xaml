@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="OfficeMS.MVVM.View.ClientLawsuitsDetails"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewmodel="clr-namespace:OfficeMS.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ClientLawsuitsDetailsViewModel}"
+             mc:Ignorable="d" d:DesignHeight="725" d:DesignWidth="1200">
+    <Grid>
+
+        <ListView Margin="5,40,5,20" ItemContainerStyle="{StaticResource ListViewItemTheme}" x:Name="LawsuitsListView" FlowDirection="RightToLeft" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  ItemsSource="{Binding Lawsuits}" Style="{DynamicResource ListViewTheme}">
+
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{StaticResource ColumnHeaderTheme}">
+                    <GridViewColumn Header="الرقــم" DisplayMemberBinding="{Binding Number}" Width="100"/>
+                    <GridViewColumn Header="الســنـة" DisplayMemberBinding="{Binding Year}" Width="80"/>
+                    <GridViewColumn Header="المحــكــمة" DisplayMemberBinding="{Binding Court}" Width="180"/>
+                    <GridViewColumn Header="الدائــرة" DisplayMemberBinding="{Binding Circle}" Width="180"/>
+                    <GridViewColumn Header="يوم الإنعقاد" DisplayMemberBinding="{Binding Day}" Width="140"/>
+                    <GridViewColumn Header="الأتعــاب" DisplayMemberBinding="{Binding Cost}" Width="130"/>
+                    <GridViewColumn Header="اســم الخصــم" DisplayMemberBinding="{Binding OpponentName}" Width="220"/>
+                    <GridViewColumn Header="صفة الموكل" DisplayMemberBinding="{Binding ClientDescription}" Width="150"/>
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+        
+    </Grid>
+</UserControl>

@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:Class="OfficeMS.Theme.ListView.ListViewItemTheme">
+
+    <Style x:Key="ListViewItemTheme" TargetType="{x:Type ListViewItem}">
+
+        <Style.Setters>
+            <Setter Property="BorderBrush" Value="#ee6c4d"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="/Fonts/#Tajawal"/>
+            <Setter Property="Margin" Value="3,0,3,10"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        </Style.Setters>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#98c1d9"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#293241"/>
+            </Trigger>
+            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                <Setter Property="IsSelected" Value="True"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

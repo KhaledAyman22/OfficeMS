@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="OfficeMS.MVVM.View.SearchSuit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewmodel="clr-namespace:OfficeMS.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainSearchSuitViewModel}"
+             mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="1000">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="0" Text="{Binding CName}" HorizontalAlignment="Right" Margin="0,0,20,0" Style="{StaticResource SearchBoxTheme}" Width="300" Tag="الاســـم" TabIndex="1"></TextBox>
+        <Button x:Name="SearchButton" Width="80" Grid.Row="0" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=NormalButtonTheme}" Content="بـحــث" FontSize="20" Margin="0,0,400,0" Click="SearchButton_Click" />
+
+        <ListView x:Name="LawsuitsListView" ItemContainerStyle="{StaticResource ListViewItemTheme}" FlowDirection="RightToLeft" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,5" ItemsSource="{Binding SearchResult}" Style="{DynamicResource ListViewTheme}">
+
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{StaticResource ColumnHeaderTheme}">
+                    <GridViewColumn Header="الرقـم القـومـي" DisplayMemberBinding="{Binding Client.Id}" Width="200"/>
+                    <GridViewColumn Header="الرقــم" DisplayMemberBinding="{Binding Number}" Width="150"/>
+                    <GridViewColumn Header="الســنـة" DisplayMemberBinding="{Binding Year}" Width="130"/>
+                    <GridViewColumn Header="المحـكـمة" DisplayMemberBinding="{Binding Court}" Width="200"/>
+                    <GridViewColumn Header="الدائــرة" DisplayMemberBinding="{Binding Circle}" Width="200"/>
+                    <GridViewColumn Header="يــوم الإنعقــاد" DisplayMemberBinding="{Binding Day}" Width="130"/>
+                    <GridViewColumn Header="الأتعــاب" DisplayMemberBinding="{Binding Cost}" Width="180"/>
+                    <GridViewColumn Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="DetailsButton" Width="80" Content="تفـاصيـل" Style="{StaticResource NormalButtonTheme}" FontSize="18" Margin="0,5,0,5" Click="DetailsButton_Click"></Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="OfficeMS.MVVM.View.RecordsDetails"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewmodel="clr-namespace:OfficeMS.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:LawsuitRecordsDetailsViewModel}"
+             mc:Ignorable="d" d:DesignHeight="725" d:DesignWidth="1200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="190"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="AddButton" Width="80" Margin="0,0,20,0" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource ResourceKey=NormalButtonTheme}" Content="إضـافـة" FontSize="20" Click="AddButton_Click"  />
+            <DatePicker Visibility="{Binding DatePickerVis}" SelectedDate="{Binding SelectedDate}" Width="300" x:Name="DatePicker" Margin="0,0,20,0" FlowDirection="RightToLeft" CalendarStyle="{DynamicResource CalendarTheme}"  Style="{DynamicResource DatePickerTheme2}"/>
+            <RadioButton Style="{StaticResource RadioTheme}" Margin="0,0,20,0" Content="نهائي" FontSize="15" Width="50" Height="50"  IsTabStop="False" IsChecked="False" Command="{Binding Final}"/>
+            <RadioButton Style="{StaticResource RadioTheme}" Margin="0,0,20,0" Content="تأجيل" FontSize="15" Width="50" Height="50"  IsTabStop="False" IsChecked="True" Command="{Binding Postponed}"/>
+            <TextBox Text="{Binding Decision}" HorizontalAlignment="Right" Style="{StaticResource SearchBoxTheme}" Width="600" Tag="قرار الجلسة الأخيرة" Margin="0,0,10,0"/>
+        </StackPanel>
+
+        <ListView Grid.Row="1" ItemContainerStyle="{StaticResource ListViewItemTheme}" x:Name="LawsuitsListView" FlowDirection="RightToLeft" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,5" ItemsSource="{Binding Records}" Style="{DynamicResource ListViewTheme}">
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{StaticResource ColumnHeaderTheme}">
+                    <GridViewColumn Header="تـاريـخ الجلـســة" DisplayMemberBinding="{Binding Date}" Width="140"/>
+                    <GridViewColumn Header="الـقــــرار" DisplayMemberBinding="{Binding Decision}" Width="900"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button Grid.Row="3" Width="80" x:Name="PrintButton" Margin="20,0,0,0" VerticalAlignment="Center" Style="{StaticResource ResourceKey=NormalButtonTheme}" Content="طبــاعــة" FontSize="20" Click="PrintButton_Click"/>
+
+    </Grid>
+</UserControl>
